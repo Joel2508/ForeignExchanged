@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ForeignExchanged2.View.MainView"
+             BackgroundColor="White"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="30">
+            <Label 
+                HorizontalOptions="Center"
+                Text="Foreign Exchanged"
+                FontAttributes="Bold"
+                FontSize="Large">
+            </Label>
+            <StackLayout
+                Orientation="Vertical">
+                <Label
+                    TextColor="Black"
+                    Text="Amout:">
+                </Label>
+                <Entry            
+                    Text="{Binding Amount, Mode=TwoWay}"
+                    Placeholder="Enter the amout to ">
+                </Entry>
+                <Label
+                    TextColor="Black"
+                    Text="Source Rate:">
+                </Label>
+                <Picker
+                    ItemDisplayBinding="{Binding Name}"
+                    ItemsSource="{Binding Rates}"
+                    SelectedItem="{Binding SourceRate, Mode=TwoWay}"
+                    Title="Select a Source Rate"
+                    TextColor="White">
+                </Picker>
+                <Label
+                    TextColor="Black"
+                    Text="Targer Rate:">
+                </Label>
+                <Picker
+                    ItemDisplayBinding="{Binding Name}"
+                    ItemsSource="{Binding Rates}"
+                    SelectedItem="{Binding TargerRate, Mode=TwoWay}"
+                    Title="Select Targer Rate....:"
+                    TextColor="White">
+                </Picker>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                     Color="White">
+                </ActivityIndicator>
+                <Button
+                    
+                    BackgroundColor="BurlyWood"
+                    BorderRadius="20"
+                    Command="{Binding ConvertsCommand}"
+                    HeightRequest="50"
+                    FontSize="Medium"                    
+                    FontAttributes="Bold"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    Text="Convert"                    
+                    TextColor="Black">
+                </Button>
+                <Label
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,10"
+                    Text="{Binding Result, Mode=TwoWay}"
+                    TextColor="Aquamarine"
+                    VerticalOptions="FillAndExpand"
+                    VerticalTextAlignment="Center">
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
